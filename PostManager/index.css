@@ -1,0 +1,90 @@
+.App {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+h2 {
+  color: #34495e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.posts-wrapper {
+  margin-top: 30px;
+}
+
+.post {
+  background: #f9f9f9;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.post:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post.removed {
+  background: #ffecec;
+  border-left: 4px solid #ff6b6b;
+}
+
+.post ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.remove-btn {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color: #ff5252;
+}
+
+.return-btn {
+  background-color: #51cf66;
+  color: white;
+}
+
+.return-btn:hover {
+  background-color: #40c057;
+}
+
+@media (max-width: 600px) {
+  .post li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
