@@ -1,92 +1,54 @@
-import React, {Component} from "react";
-import {MovieCard} from "./MovieCard";
+import React, { Component } from "react";
+import MovieCard from "./MovieCard";
 
-export class Slider extends Component {
+class Slider extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      visibleIndexes: new Set(),
-    };
-    this.sliderRef = React.createRef();
-    this.observer = null;
+    this.trackRef = React.createRef();
   }
 
-  componentDidMount() {
-    this.initObserver();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.movies !== this.props.movies) {
-      this.initObserver();
+  scroll = (direction) => {
+    if (this.trackRef.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      this.trackRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
     }
-  }
-
-  componentWillUnmount() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-  }
-
-  initObserver() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-
-    if (!this.sliderRef.current) return;
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            this.setState((state) => {
-              if (!state.visibleIndexes.has(index)) {
-                const newSet = new Set(state.visibleIndexes);
-                newSet.add(index);
-                return { visibleIndexes: newSet };
-              }
-              return null;
-            });
-            this.observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: this.sliderRef.current,
-        rootMargin: "200px",
-        threshold: 0.1,
-      }
-    );
-
-    const children = this.sliderRef.current.children;
-    for (let i = 0; i < children.length; i++) {
-      this.observer.observe(children[i]);
-    }
-  }
+  };
 
   render() {
-    const { title, movies } = this.props;
-    const { visibleIndexes } = this.state;
-
+    const { id, title, movies, onScroll } = this.props;
+    
     return (
-      <section className="slider">
+      <section className="slider" id={id}>
         <h2 className="slider__title">{title}</h2>
-        <div className="slider__track" ref={this.sliderRef}>
-          {movies.map((movie, index) => (
-            <div
-              key={movie.kinopoiskId || index}
-              data-index={index}
-              className="movie-card-wrapper"
-            >
-              {visibleIndexes.has(index) ? (
-                <MovieCard movie={movie} />
-              ) : (
-                <div className="movie-card-placeholder" />
-              )}
-            </div>
-          ))}
+        <div className="slider__container">
+          <button 
+            className="slider__button slider__button--left" 
+            onClick={() => this.scroll("left")}
+          >
+            &lt;
+          </button>
+          <div 
+            className="slider__track" 
+            ref={this.trackRef}
+            onScroll={onScroll}
+          >
+            {movies.map((movie) => (
+              <MovieCard key={movie.kinopoiskId || movie.filmId} movie={movie} />
+            ))}
+          </div>
+          <button 
+            className="slider__button slider__button--right" 
+            onClick={() => this.scroll("right")}
+          >
+            &gt;
+          </button>
         </div>
       </section>
     );
   }
 }
+
+export default Slider;

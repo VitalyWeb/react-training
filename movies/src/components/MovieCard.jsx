@@ -1,21 +1,17 @@
-import React, {Component} from "react";
+import React from "react";
 
-export class MovieCard extends Component {
-  render() {
-    const { movie } = this.props;
-    return (
-      <div className="movie-card movie-card_large">
-        <img
-          src={movie.posterUrlPreview || movie.posterUrl}
-          alt={movie.nameRu || movie.nameEn}
-          className="movie-card__image"
-          loading="lazy"
-        />
-        <div className="movie-card__info">
-          <h3 className="movie-card__title">{movie.nameRu || movie.nameEn}</h3>
-          <p className="movie-card__year">{movie.year}</p>
-        </div>
-      </div>
-    );
-  }
-}
+const MovieCard = ({ movie }) => (
+  <div className="movie-card">
+    <img
+      className="movie-card__image"
+      src={movie.posterUrlPreview || movie.posterUrl}
+      alt={movie.nameRu || movie.nameEn}
+    />
+    <div className="movie-card__info">
+      <div className="movie-card__title">{movie.nameRu || movie.nameEn}</div>
+      <div className="movie-card__year">{movie.year}</div>
+    </div>
+  </div>
+);
+
+export default MovieCard;

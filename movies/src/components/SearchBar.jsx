@@ -1,33 +1,45 @@
 import React, { Component } from "react";
 
-export class SearchBar extends Component {
+export default class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ""
+      query: props.search || "",
     };
-    this.timeout = null;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.search !== this.props.search) {
+      this.setState({ query: this.props.search || "" });
+    }
   }
 
   handleChange = (e) => {
-    const value = e.target.value;
-    this.setState({ query: value });
+    this.setState({ query: e.target.value });
+  };
 
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      this.props.onSearch(value);
-    }, 500);
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const trimmed = this.state.query.trim();
+    if (trimmed.length > 0) {
+      this.props.onSearch(trimmed);
+    }
   };
 
   render() {
     return (
-      <input
-        type="text"
-        className="header__search"
-        placeholder="Поиск фильма..."
-        value={this.state.query}
-        onChange={this.handleChange}
-      />
+      <form className="search-bar" onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          placeholder="Поиск фильма..."
+          className="search-bar__input"
+          value={this.state.query}
+          onChange={this.handleChange}
+        />
+        <button type="submit" className="search-bar__button" title="Поиск">
+          🔍
+        </button>
+      </form>
     );
   }
 }

@@ -1,0 +1,37 @@
+.movie-card {
+  background-color: var(--bg-darkest);
+  border-radius: 0.5rem;
+  width: clamp(150px, 40vw, 200px);
+  flex: 0 0 auto;
+  overflow: hidden;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card:hover {
+  transform: translateY(-0.5rem) scale(1.02);
+}
+
+.movie-card__image {
+  width: 100%;
+  height: clamp(200px, 55vw, 300px);
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card__info {
+  padding: clamp(0.8rem, 2vw, 1rem);
+}
+
+.movie-card__title {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card__year {
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  color: var(--text-gray);
+}

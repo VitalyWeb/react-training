@@ -1,17 +1,27 @@
-import React, { Component } from "react";
-import {Slider} from "../components/Slider";
+import React from "react";
+import Slider from "../components/Slider";
 
-export class Main extends Component {
-  render() {
-    const { moviesFilms, moviesNew, moviesBest, moviesSeries } = this.props;
-
+const Main = ({
+  filteredMovies,
+  search,
+  categories,
+  onScroll,
+}) => {
+  if (filteredMovies.length > 0) {
     return (
       <main className="main">
-        <Slider title="Фильмы" movies={moviesFilms} />
-        <Slider title="Сериалы" movies={moviesSeries} />
-        <Slider title="Новинки" movies={moviesNew} />
-        <Slider title="Лучшие фильмы" movies={moviesBest} />
+        <Slider title={`Результаты поиска: "${search}"`} movies={filteredMovies} />
       </main>
     );
   }
-}
+
+  return (
+    <main className="main">
+      {categories.map(({ title, key, movies }) => (
+        <Slider key={key} id={key} title={title} movies={movies} onScroll={(e) => onScroll(e, key)} />
+      ))}
+    </main>
+  );
+};
+
+export default Main;

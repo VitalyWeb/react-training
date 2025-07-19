@@ -1,0 +1,61 @@
+.slider {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.slider__title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 600;
+}
+
+.slider__container {
+  position: relative;
+}
+
+.slider__track {
+  display: flex;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 1rem 0;
+  margin: 0 -5%;
+  padding: 1rem 5%;
+}
+
+.slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(2rem, 5vw, 2.5rem);
+  height: clamp(2rem, 5vw, 2.5rem);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  opacity: 0.8;
+}
+
+.slider__button:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.slider__button--left {
+  left: clamp(-1rem, -2vw, -0.5rem);
+}
+
+.slider__button--right {
+  right: clamp(-1rem, -2vw, -0.5rem);
+}

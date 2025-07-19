@@ -1,0 +1,99 @@
+.footer {
+  background-color: var(--bg-darker);
+  color: var(--text-gray);
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.footer__section {
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.footer__title {
+  color: var(--text-light);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
+  font-weight: 600;
+}
+
+.footer__links,
+.footer__contacts {
+  list-style: none;
+}
+
+.footer__links li,
+.footer__contacts li {
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem);
+}
+
+.footer__links a,
+.footer__contacts a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-block;
+  font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+}
+
+.footer__links a:hover,
+.footer__contacts a:hover {
+  color: var(--primary-color);
+}
+
+.footer__social {
+  display: flex;
+  gap: clamp(0.8rem, 2vw, 1rem);
+  margin-top: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2rem, 6vw, 2.5rem);
+  height: clamp(2rem, 6vw, 2.5rem);
+  border-radius: 50%;
+  color: white;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.footer__social-link--vk:hover { background-color: #4a76a8; }
+.footer__social-link--tg:hover { background-color: #2aabee; }
+.footer__social-link--yt:hover { background-color: #ff0000; }
+
+.footer__bottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.footer__legal {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  margin-top: clamp(0.8rem, 2vw, 1rem);
+  flex-wrap: wrap;
+}
+
+.footer__legal a {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+}
+
+.footer__legal a:hover {
+  color: var(--primary-color);
+}
