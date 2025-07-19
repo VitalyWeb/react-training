@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1f1f1f;
+  border-bottom: 1px solid #333;
+}
+
+.header__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.header__menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.header__menu-item {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.header__menu-item:hover {
+  color: #e50914;
+}
+
+.header__search {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+.header__search::placeholder {
+  color: #888;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.slider {
+  margin-bottom: 2rem;
+}
+
+.slider__title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.slider__track {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px; /* отступы между карточками */
+  padding-bottom: 10px; /* при необходимости */
+  scroll-behavior: smooth;
+}
+
+.movie-card {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  width: 160px;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.movie-card_large {
+  width: 220px;
+  margin: 0 12px;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.movie-card_large:hover {
+  transform: translateY(-5px);
+}
+
+.movie-card__image {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.movie-card-wrapper {
+  flex: 0 0 auto;
+  width: 320px;
+  height: 380px;
+}
+
+.movie-card-placeholder {
+  width: 320px;
+  height: 380px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}
+
+
+.movie-card__info {
+  padding: 0.5rem;
+}
+
+.movie-card__title {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+.movie-card__year {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.footer {
+  background-color: #1f1f1f;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+  color: #888;
+}
