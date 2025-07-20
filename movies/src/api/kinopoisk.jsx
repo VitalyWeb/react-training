@@ -1,5 +1,5 @@
-// api.js
-const API_KEY = "d3b8ee62-badb-4ac8-87dd-fb01dc336e39";
+const API_KEY = process.env.REACT__APP__API__KEY;
+
 const headers = {
   "X-API-KEY": API_KEY,
   "Content-Type": "application/json",

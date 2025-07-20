@@ -37,7 +37,7 @@ export default class SearchBar extends Component {
           onChange={this.handleChange}
         />
         <button type="submit" className="search-bar__button" title="Поиск">
-          🔍
+          <i className="fas fa-search"></i>
         </button>
       </form>
     );

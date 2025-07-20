@@ -17,6 +17,7 @@ const Header = ({ onSearchChange, onClearSearch, search }) => (
       <li className="header__menu-item" onClick={() => scrollToSection("moviesSeries")}>Сериалы</li>
       <li className="header__menu-item" onClick={() => scrollToSection("moviesNew")}>Новинки</li>
       <li className="header__menu-item" onClick={() => scrollToSection("moviesBest")}>Лучшие</li>
+      
     </ul>
 
     <SearchBar onSearch={onSearchChange} search={search} />

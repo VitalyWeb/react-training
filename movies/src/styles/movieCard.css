@@ -35,3 +35,10 @@
   font-size: clamp(0.7rem, 2.5vw, 0.8rem);
   color: var(--text-gray);
 }
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 3rem;
+  padding: 10px 0;
+}

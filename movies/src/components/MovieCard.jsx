@@ -1,17 +1,37 @@
 import React from "react";
 
-const MovieCard = ({ movie }) => (
-  <div className="movie-card">
-    <img
-      className="movie-card__image"
-      src={movie.posterUrlPreview || movie.posterUrl}
-      alt={movie.nameRu || movie.nameEn}
-    />
-    <div className="movie-card__info">
-      <div className="movie-card__title">{movie.nameRu || movie.nameEn}</div>
-      <div className="movie-card__year">{movie.year}</div>
+const MovieCard = ({ movie }) => {
+  const {
+    posterUrlPreview,
+    posterUrl,
+    nameRu,
+    nameEn,
+    year,
+    countries,
+    genres,
+  } = movie;
+
+  const title = nameRu || nameEn || "Без названия";
+  const poster = posterUrlPreview || posterUrl;
+  const country = countries?.[0]?.country || "Неизвестно";
+  const genre = genres?.[0]?.genre || "Жанр не указан";
+
+  return (
+    <div className="movie-card">
+      <img
+        className="movie-card__image"
+        src={poster}
+        alt={title}
+      />
+      <div className="movie-card__info">
+        <div className="movie-card__title">{title}</div>
+        <div className="movie-card__year">{year}</div>
+        <div className="movie-card__extra">
+          <span>{country}</span> • <span>{genre}</span>
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default MovieCard;

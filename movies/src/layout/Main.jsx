@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "../components/Slider";
+import MovieCard from "../components/MovieCard";
 
 const Main = ({
   filteredMovies,
@@ -10,7 +11,12 @@ const Main = ({
   if (filteredMovies.length > 0) {
     return (
       <main className="main">
-        <Slider title={`Результаты поиска: "${search}"`} movies={filteredMovies} />
+        <h2 className="search-title">{`Результаты поиска: "${search}"`}</h2>
+        <div className="movie-grid">
+          {filteredMovies.map((movie) => (
+            <MovieCard key={movie.kinopoiskId || movie.id} movie={movie} />
+          ))}
+        </div>
       </main>
     );
   }
@@ -18,7 +24,13 @@ const Main = ({
   return (
     <main className="main">
       {categories.map(({ title, key, movies }) => (
-        <Slider key={key} id={key} title={title} movies={movies} onScroll={(e) => onScroll(e, key)} />
+        <Slider
+          key={key}
+          id={key}
+          title={title}
+          movies={movies}
+          onScroll={(e) => onScroll(e, key)}
+        />
       ))}
     </main>
   );
