@@ -3,7 +3,7 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import Main from "./layout/Main";
 
-import { fetchCategory, fetchNewReleases, fetchSeries, searchByKeyword } from "./api/kinopoisk";
+import { fetchCategoryFilm, fetchNewReleases, fetchSeries, searchByKeyword, fetchTopRatedMovies, fetchCartoons, fetchAnime } from "./api/kinopoisk";
 
 import "./style.css";
 
@@ -21,6 +21,11 @@ export default class App extends Component {
       moviesBestVisible: [],
       moviesSeriesAll: [],
       moviesSeriesVisible: [],
+      moviesCartoonsAll: [],
+      moviesCartoonsVisible: [],
+      moviesAnimeAll: [],
+      moviesAnimeVisible: [],
+
     };
   }
 
@@ -32,7 +37,7 @@ export default class App extends Component {
 
   loadSequentially = async () => {
     try {
-      const filmsAll = await fetchCategory("TOP_100_POPULAR_FILMS");
+      const filmsAll = await fetchCategoryFilm();
       this.setState({
         moviesFilmsAll: filmsAll,
         moviesFilmsVisible: filmsAll.slice(0, 8),
@@ -46,7 +51,7 @@ export default class App extends Component {
       });
       await this.wait(500);
 
-      const bestAll = await fetchCategory("TOP_250_BEST_FILMS");
+      const bestAll = await fetchTopRatedMovies();
       this.setState({
         moviesBestAll: bestAll,
         moviesBestVisible: bestAll.slice(0, 8),
@@ -58,6 +63,20 @@ export default class App extends Component {
         moviesSeriesAll: seriesAll,
         moviesSeriesVisible: seriesAll.slice(0, 8),
       });
+
+      const cartoonsAll = await fetchCartoons();
+      this.setState({
+        moviesCartoonsAll: cartoonsAll,
+        moviesCartoonsVisible: cartoonsAll.slice(0, 8),
+      });
+      await this.wait(500);
+
+      const animeAll = await fetchAnime();
+      this.setState({
+        moviesAnimeAll: animeAll,
+        moviesAnimeVisible: animeAll.slice(0, 8),
+      });
+
     } catch (e) {
       console.error("Ошибка при загрузке данных:", e);
     }
@@ -130,6 +149,8 @@ export default class App extends Component {
       { title: "Сериалы", key: "moviesSeries", movies: moviesSeriesVisible },
       { title: "Новинки", key: "moviesNew", movies: moviesNewVisible },
       { title: "Лучшие фильмы", key: "moviesBest", movies: moviesBestVisible },
+      { title: "Мультфильмы", key: "moviesCartoons", movies: this.state.moviesCartoonsVisible },
+      { title: "Аниме", key: "moviesAnime", movies: this.state.moviesAnimeVisible },
     ];
 
     return (
